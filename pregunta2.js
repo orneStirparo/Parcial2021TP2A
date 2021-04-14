@@ -13,10 +13,53 @@
     shirts: 10,
     pants: 5,
   }
+  const VENTA_EXITOSA = 200;
+  const VENTA_FALLADA = 500;
 
 const sale = function (article, cant){
-  
+  function inventario(articulo, cant){
+    if( cant <= articulo ){
+      return true;
+    }else{
+    return false;
+    }
+  }
+    switch (article) {
+      case 'shoes':
+        if(inventario(inventory.shoes, cant)){
+          inventory.shoes = inventory.shoes - cant
+          return VENTA_EXITOSA
+        }
+        return VENTA_FALLADA
+        break;
+        
+        case 'socks':
+          if(inventario(inventory.socks, cant)){
+            inventory.socks = inventory.socks - cant
+            return VENTA_EXITOSA
+          }
+          return VENTA_FALLADA
+          break;
+
+          case 'shirts':
+            if(inventario(inventory.shirts, cant)){
+              inventory.shirts = inventory.shirts - cant
+              return VENTA_EXITOSA
+            }
+            return VENTA_FALLADA
+            break;
+
+            case 'pants':
+              if(inventario(inventory.pants, cant)){
+                inventory.pants = inventory.pants - cant
+                return VENTA_EXITOSA
+              }
+              return VENTA_FALLADA
+              break;
+      default:
+        break; }
 }
+  
 
 // TESTS (no modificar)
 console.log(sale('shoes',8) === 200 && inventory.shoes === 2);
